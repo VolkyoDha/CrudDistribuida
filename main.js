@@ -7,6 +7,31 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+const db = mongoose.connection;
+db.on("error", (error) => console.log(error));
+db.once("open", () => console.log("Connected to Database"));
+
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(session({
+    secret: 'KEYSECRET',
+    resave: false,
+    saveUninitialized: true
+    })
+);
+
+app.use((req, res, next) => {
+    res.locals.message = req.session.message;
+    delete req.session.message;
+    next();
+});
+
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
