@@ -5,22 +5,18 @@ const userSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true, 
-        required:true
     },
     email:{
         type:String,
         required:true, 
-        required:true
     },
     phone:{
         type:String,
         required:true, 
-        required:true
     },
-    Image:{
+    image:{
         type:String,
         required:true,  
-        required:true
     },
     created:{
         type:Date,
