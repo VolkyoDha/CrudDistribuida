@@ -34,8 +34,6 @@ app.set("view engine", "ejs");
 
 app.use("", require("./routes/routes"));
 
-
-
 app.listen(PORT, () => {
   console.log(`Server started at https://localhost:${PORT}`);
 });
