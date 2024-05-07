@@ -22,21 +22,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single("image");
 
-// Middleware para verificar errores de carga de archivos
-function handleUploadErrors(err, req, res, next) {
-    if (err instanceof multer.MulterError) {
-        // Error de Multer
-        res.json({ message: err.message, type: "danger" });
-    } else if (err) {
-        // Otro error
-        res.json({ message: err.message, type: "danger" });
-    } else {
-        next(); // Pasar al siguiente middleware
-    }
-}
+
 
 // Aplicar el middleware de multer antes del controlador POST
-router.post("/add", upload, handleUploadErrors, async (req, res) => {
+router.post("/add", upload, async (req, res) => {
     try {
         const user = new User({
             name: req.body.name,
