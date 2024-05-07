@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-rotuer.get("/users", (req, res) => {
+router.get("/users", (req, res) => {
     res.send("All Users");
 })
 

@@ -32,9 +32,9 @@ app.use((req, res, next) => {
 
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.send("Hello Worlds");
-});
+app.use("", require("./routes/routes"));
+
+
 
 app.listen(PORT, () => {
   console.log(`Server started at https://localhost:${PORT}`);
