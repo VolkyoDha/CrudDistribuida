@@ -1,17 +1,34 @@
-name: Deploy
+name: Deploy and Health Check
 
 on:
   push:
     branches:
-      - e309637
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.13.15
         with:
-          heroku_api_key: HRKU-3e5b5d48-e5c9-4e8e-b564-97d453a19a99
-          heroku_app_name: cruddistribuida #Must be unique in Heroku
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: cruddistribuida
           heroku_email: clobodiaz@outlook.com
+
+  health-check:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Validate Health
+        run: |
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" https://cruddistribuida.herokuapp.com/health)
+          if [ $status_code -eq 200 ]; then
+            echo "Health check passed"
+          else
+            echo "Health check failed. Status code: $status_code"
+            exit 1
+          fi
