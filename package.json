@@ -4,7 +4,7 @@
   "main": "main.js",
   "engines": {
     "node": "21.6.0",
-    "npm": "8.3.0"
+    "npm": "10.6.0"
   },
   "scripts": {
     "start": "node main.js"
