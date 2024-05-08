@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 require('dotenv').config({path:'.env'});
 
@@ -23,7 +23,7 @@ app.use(
 );
 
 // Database connection
-mongoose.connect(process.env.DB_URI, {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -53,6 +53,8 @@ app.use(express.static("uploads"));
 const host = process.env.HOST || "0.0.0.0";
 const ports = process.env.PORT || 3000;
 
-app.listen(ports, host, () => {
-  console.log(`Server is running `);
+
+app.listen(port, host, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
