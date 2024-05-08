@@ -1,7 +1,7 @@
 const { name } = require("ejs");
 const mongoose = require('mongoose');
-const { emit } = require("nodemon");
 const express = require('express');
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
