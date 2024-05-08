@@ -5,6 +5,10 @@ const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+require('dotenv').config({path:'.env'});
+
+console.log(process.env.DB_URL)
+
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,6 +48,10 @@ app.use((err, req, res, next) => {
 app.use(express.static("uploads"));
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`App is listening on http://localhost:${PORT}`);
+
+const host = process.env.HOST || "0.0.0.0";
+const ports = process.env.PORT || 3000;
+
+app.listen(ports, host, () => {
+  console.log(`Server is running `);
 });
