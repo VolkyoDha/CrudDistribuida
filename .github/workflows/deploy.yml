@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.13.15
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_api_key: HRKU-3e5b5d48-e5c9-4e8e-b564-97d453a19a99
           heroku_app_name: cruddistribuida
           heroku_email: clobodiaz@outlook.com
 
@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Validate Health
         run: |
-          status_code=$(curl -s -o /dev/null -w "%{http_code}" https://cruddistribuida.herokuapp.com/health)
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" https://cruddistribuida-2495a50fb2fc.herokuapp.com/)
           if [ $status_code -eq 200 ]; then
             echo "Health check passed"
           else
