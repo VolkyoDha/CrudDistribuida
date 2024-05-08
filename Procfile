@@ -1,1 +1,1 @@
-web: node cruddistribuida/main.js
+web: node main.js
