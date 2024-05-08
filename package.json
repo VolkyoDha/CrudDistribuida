@@ -7,7 +7,8 @@
     "npm": "10.6.0"
   },
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "dev": "nodemon main.js"
   },
   "author": "",
   "license": "ISC",
