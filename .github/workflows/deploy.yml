@@ -3,7 +3,7 @@ name: Deploy and Health Check
 on:
   push:
     branches:
-      - main
+      - e309637
 
 jobs:
   deploy:
