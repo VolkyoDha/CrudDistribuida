@@ -6,9 +6,7 @@ const session = require("express-session");
 const app = express();
 const port = process.env.PORT || 3000;
 
-require('dotenv').config({path:'.env'});
-
-console.log(process.env.DB_URL)
+console.log(process.env.DB_URI)
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +21,7 @@ app.use(
 );
 
 // Database connection
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
