@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "node main.js",
-    "start:dev": "nodemon --watch",
     "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
   },
   "author": "",
@@ -20,8 +19,7 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "mongoose": "^8.3.4",
-    "multer": "^1.4.5-lts.1",
-    "nodemon": "3.1.0"
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
