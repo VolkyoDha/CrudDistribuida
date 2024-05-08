@@ -5,10 +5,6 @@ const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-require('dotenv').config({path:'.env'});
-
-console.log(process.env.DB_URL)
-
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,14 +40,10 @@ app.use((err, req, res, next) => {
   res.status(500).send("Internal Server Error");
 });
 
-//logic for image icon
+// Serve static files from the 'uploads' directory
 app.use(express.static("uploads"));
 
 // Start the server
-
-const host = process.env.HOST || "0.0.0.0";
-const ports = process.env.PORT || 3000;
-
-app.listen(ports, host, () => {
-  console.log(`Server is running `);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
