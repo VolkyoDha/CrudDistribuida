@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node main.js",
-    "start:dev": "nodemon main.js"
+    "start:dev": "nodemon --watch",
+    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
   },
   "author": "",
   "license": "ISC",
